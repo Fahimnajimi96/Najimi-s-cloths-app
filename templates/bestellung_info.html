@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Bestellung bestätigen{% endblock %}
+{% block content %}
+<h3>Bitte Kundendaten eingeben</h3>
+<form action="{{ url_for('bestllung_abschicken', produkt_id=produkt['id']) }}" method="POST">
+  <input type="hidden" name="menge" value="{{ menge }}">
+  <input type="hidden" name="grosse" value="{{ grosse }}">
+  <input type="hidden" name="farbe" value="{{ farbe }}">
+  <input type="hidden" name="gesamtpreis" value="{{ gesamtpreis }}">
+
+  <div class="mb-3">
+    <label>Vorname</label>
+    <input type="text" name="vorname" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Nachname</label>
+    <input type="text" name="nachname" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Rufnummer</label>
+    <input type="text" name="rufnummer" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Adresse</label>
+    <input type="text" name="adresse" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Bankverbindung</label>
+    <input type="text" name="bank" class="form-control" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Bestellung abschließen</button>
+</form>
+{% endblock %}

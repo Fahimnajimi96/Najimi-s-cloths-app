@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Produkte - {{ kategorie_name }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center"> "{{ kategorie_name }}"</h1>
+
+<div class="row g-4">
+{% for produkt in produkte %}
+    <div class="col-md-3 col-sm-6">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ url_for('static', filename='images/' + produkt['kategorie'] + '/' + produkt['bild']) }}"
+                 class="card-img-top" alt="{{ produkt['name'] }}"
+                 style="height: 220px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ produkt['name'] }}</h5>
+                <p>Preis: {{ produkt['preis'] }} €</p>
+                <a href="{{ url_for('detail', produkt_id=produkt['id']) }}" class="btn btn-primary w-100">
+                    Details
+                </a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

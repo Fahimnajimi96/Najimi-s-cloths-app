@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Admin - Najimi's Kleidung{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">🧑Neue Kleidung</h1>
+
+<form action="{{ url_for('add_kleidung') }}" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Preis (€)</label>
+    <input type="number" name="preis" step="0.01" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Größe</label>
+    <input type="text" name="grosse" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Farbe</label>
+    <input type="text" name="farbe" class="form-control">
+  </div>
+
+  <div class="mb-3">
+      <label class="form-label">Kategorie</label>
+      <select name="kategorie" class="form-select" required>
+          <option value="">--Wähle eine Kategorie--</option>
+          <option value="hijab">Hijab</option>
+          <option value="gand-Afghani">Gand Afghani</option>
+          <option value="hose">Hose</option>
+          <option value="jacket">Jacket</option>
+          <option value="panjabi">Panjabi</option>
+      </select>
+  </div>
+
+
+
+
+  <div class="mb-3">
+    <label class="form-label">Bild hochladen</label>
+    <input type="file" name="bild" accept="image/*" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Speichern</button>
+</form>
+{% endblock %}

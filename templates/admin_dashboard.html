@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center">Kunden Informationen</h1>
+
+<h3>Alle Bestellungen</h3>
+<form action="{{ url_for('home') }}" method="POST" class="d-flex mb-3">
+    <input type="text" name="search" class="form-control me-2" placeholder="Produkt suchen..." required>
+    <button type="submit" class="btn btn-primary">Suchen</button>
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Produkt</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Rufnummer</th>
+            <th>Adresse</th>
+            <th>Bank</th>
+            <th>Menge</th>
+            <th>Größe</th>
+            <th>Farbe</th>
+            <th>Gesamtpreis</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in bestellungen %}
+        <tr>
+            <td>{{ b['id'] }}</td>
+            <td>{{ b['produkt_name'] }}</td>
+            <td>{{ b['vorname'] }}</td>
+            <td>{{ b['nachname'] }}</td>
+            <td>{{ b['rufnummer'] }}</td>
+            <td>{{ b['adresse'] }}</td>
+            <td>{{ b['bank'] }}</td>
+            <td>{{ b['menge'] }}</td>
+            <td>{{ b['grosse'] }}</td>
+            <td>{{ b['farbe'] }}</td>
+            <td>{{ b['gesamtpreis'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

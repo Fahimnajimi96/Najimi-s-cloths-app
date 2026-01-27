@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Startseite{% endblock %}
+
+{% block content %}
+
+<!-- Suchformular in einer Zeile -->
+<div class="d-flex justify-content-center mb-4">
+    <form action="{{ url_for('home') }}" method="POST" class="d-flex w-50">
+        <input type="text" name="search" class="form-control me-2" placeholder="Produkt suchen..." required>
+        <button type="submit" class="btn btn-primary">Suchen</button>
+    </form>
+</div>
+
+<!-- Kategorien anzeigen -->
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for k in kategorien %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='images/' + k['kategorie'] + '/' + k['bild']) }}" class="card-img-top" alt="{{ k['kategorie'] }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <a href="{{ url_for('kategorie', kategorie_name=k['kategorie']) }}" class="btn btn-outline-primary w-100">
+                        {{ k['kategorie'] }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

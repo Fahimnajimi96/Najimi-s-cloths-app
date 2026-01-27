@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Produkt bearbeiten{% endblock %}
+
+{% block content %}
+<h2>Produkt bearbeiten</h2>
+<form method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ produkt['name'] }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Preis</label>
+    <input type="number" step="0.01" name="preis" value="{{ produkt['preis'] }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Größe</label>
+    <input type="text" name="grosse" value="{{ produkt['grosse'] }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Farbe</label>
+    <input type="text" name="farbe" value="{{ produkt['farbe'] }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Kategorie</label>
+    <select name="kategorie" class="form-select" required>
+      <option value="hijab" {% if produkt['kategorie']=='hijab' %}selected{% endif %}>Hijab</option>
+      <option value="gand-Afghani" {% if produkt['kategorie']=='gand-Afghani' %}selected{% endif %}>Gand Afghani</option>
+      <option value="hose" {% if produkt['kategorie']=='hose' %}selected{% endif %}>Hose</option>
+      <option value="jacket" {% if produkt['kategorie']=='jacket' %}selected{% endif %}>Jacket</option>
+      <option value="panjabi" {% if produkt['kategorie']=='panjabi' %}selected{% endif %}>Panjabi</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Bild ändern</label>
+    <input type="file" name="bild" class="form-control">
+    <p>Aktuelles Bild: {{ produkt['bild'] }}</p>
+  </div>
+  <button type="submit" class="btn btn-primary">Speichern</button>
+</form>
+{% endblock %}
